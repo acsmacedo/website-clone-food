@@ -1,7 +1,487 @@
 @use 'body' as *;
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&family=Poppins:wght@300;400;500;700&display=swap');
 
-// *********************************************************** MODULES
-@use './modules/module';
+// *********************************************************** MY CSS
+body {
+  font-family: 'Poppins', sans-serif;
+  
+}
+
+section {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+p {
+  font-size: 0.9em;
+}
+
+.posts, .cardapio, .info, .testimonials {
+  &__title {
+    @include func-row(g-sm);
+    text-align: center;
+    span {
+      font-family: 'Lora', serif;
+      color: #484E51;
+    }
+    h2 {
+      font-family: 'Lora', serif;
+      font-weight: 500;
+      font-size: 2.7em;
+      color: #282828;
+      margin-top: 0.5rem;
+      &::after {
+        content: "......";
+        display: block;
+        font-size: 0.5em;
+        font-weight: 400;
+        letter-spacing: 0.2em;
+        margin-bottom: 1rem;
+      }
+    }
+    p {
+      color: #484E51;
+    }
+  }
+}
+
+
+.menu {
+  background-color: #282828;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  &__container {
+    @include func-row(g-xl);
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__logo {
+    img {
+      max-width: 5rem;
+      opacity: 0.2;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+  &__options {
+    flex-direction: row;
+    align-items: center;
+    color: #696969;
+    i {
+      font-size: 1.2em;
+      padding: 0.2rem;
+      &:hover {
+        color: #FFFFFF;
+      }
+    }
+  }
+  &__links {
+    @include comp-menu-colapse-sidebar;
+  }
+  .menu-colapse-icon {
+    font-family: 'Lora', serif;
+    margin-left: 1rem;
+    padding-bottom: 0.1rem;
+    &:hover {
+      color: #FFFFFF;
+    }
+  }
+}
+
+
+.header {
+  width: 100%;
+  height: 100vh;
+  background-image: url("../img/dm22__image_01-min.jpg");
+  background-size: cover;
+  color: #FFFFFF;
+  justify-content: center;
+  text-align: center;
+  &__container {
+    @include func-row(g-md);
+    img {
+      max-width: 6rem;
+      margin: 0 auto;
+    }
+    h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.5em;
+      margin-top: 1.5rem;
+      @media (min-width: func-container(sm)) {
+        font-size: 3.5em;
+      }
+      &::after {
+        content: "......";
+        display: block;
+        font-size: 0.3em;
+        font-weight: 400;
+        letter-spacing: 0.2em;
+        margin-bottom: 1rem;
+      }
+    }
+    p {
+      font-family: 'Lora', serif;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      line-height: 1.5em;
+    }
+    a {
+      border: 0.0625rem solid #FFFFFF;
+      border-radius: 1000rem;
+      align-self: center;
+      padding: 0.75rem 2rem;
+      font-size: 0.8em;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      &:hover {
+        background-color: #FFFFFF;
+        color: #282828;
+      }
+    }
+    i {
+      @include comp-scroll-down;
+      position: absolute;
+      bottom: 2rem;
+      left: calc(50% - 12px);
+      font-size: 1.5em;
+    }
+  }
+}
+
+.about {
+  background-image: url("../img/dm22__image_15-min.jpg");
+  background-size: cover;
+  &__container {
+    @include func-row(g-xl);
+    
+    @media (min-width: func-container(md)) {
+      flex-direction: row;
+    }
+  }
+  img {
+    @include func-col(md-6);
+  }
+  &__text {
+    @include func-col(md-6);
+    justify-content: center;
+    text-align: center;
+    margin-top: 2rem;
+    @media (min-width: func-container(md)) {
+      text-align: left;
+      padding-left: 2rem;
+      margin-top: 0;
+    }
+    span {
+      font-family: 'Lora', serif;
+      color: #484E51;
+    }
+    h2 {
+      font-family: 'Lora', serif;
+      font-weight: 500;
+      font-size: 2.7em;
+      color: #282828;
+      margin-top: 0.5rem;
+      &::after {
+        content: "......";
+        display: block;
+        font-size: 0.5em;
+        font-weight: 400;
+        letter-spacing: 0.2em;
+        margin-bottom: 1rem;
+      }
+    }
+    p {
+      color: #484E51;
+    }
+  }
+}
+
+
+.posts {
+  background-color: #F9F9F9;
+  &__body {
+    @include func-row(g-xl);
+    @include func-clear-col((md, 3n));
+    @media(min-width: func-container(md)) {
+      flex-direction: row;
+    }
+  }
+  &__item {
+    @include func-col(md-gutters-4);
+    margin-top: 3rem;
+    text-align: center;
+    @media (min-width: func-container(md)) {
+      text-align: left;
+    }
+    div {
+      background-size: cover;
+      background-position: center;
+      height: 20rem;
+      padding: 1rem;
+      justify-content: flex-end;
+      color: #FFFFFF;
+      span {
+        font-family: 'Lora', serif;
+        font-size: 1.4em;
+      }
+      p {
+        opacity: 0.7;
+      }
+    }
+    > p {
+      padding: 1rem;
+    }
+    a {
+      border: 0.0625rem solid #282828;
+      border-radius: 1000rem;
+      align-self: center;
+      padding: 0.5rem 1.5rem;
+      margin-left: 1rem;
+      font-size: 0.6em;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      @media (min-width: func-container(md)) {
+        align-self: flex-start;
+      }
+      &:hover {
+        background-color: #282828;
+        color: #FFFFFF;
+      }
+    }
+    &:nth-child(1) div {
+      background-image: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0)), url("../img/dm22__image_04-min.jpg");
+    }
+    &:nth-child(2) div  {
+      background-image: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0)), url("../img/dm22__image_05-min.jpg");
+    }
+    &:nth-child(3) div  {
+      background-image: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0)), url("../img/dm22__image_06-min.jpg");
+    }
+  }
+}
+
+
+.info {
+  background-image: url("../img/dm22__image_07-min-1.jpg");
+  background-size: cover;
+  padding-bottom: 13.5rem;
+  &__title {
+    @include func-row(g-md);
+    h2, span, p {
+      color: #FFFFFF;
+    }
+    div {
+      font-size: 2em  ;
+      color: #FFFFFF;
+      border: 0.0625rem solid #FFFFFF;
+      align-self: center;
+      border-radius: 50%;
+      margin-top: 1.5rem;
+      i {
+        padding: 1rem;
+      }
+    }
+  }
+}
+
+.cardapio {
+  margin-top: -15rem;
+  &__container {
+    @include func-row(g-xl);
+    background-color: #FFFFFF;
+    box-shadow: 0 0 3rem rgba(0, 0, 0, 0.4);
+  }
+  &__title {
+    margin-top: 6rem;
+  }
+  &__body {
+    @include func-row(g-xl);
+    align-items: center;
+  }
+  &__tab {
+    @include comp-tab(line);
+    align-items: center;
+    margin: 2rem 0;
+  }
+  &__footer {
+    text-align: center;
+    margin-bottom: 6rem;
+    a {
+      border: 0.0625rem solid #282828;
+      border-radius: 1000rem;
+      align-self: center;
+      padding: 0.5rem 1.5rem;
+      margin-left: 1rem;
+      font-size: 0.6em;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-top: 1rem;
+      &:hover {
+        background-color: #282828;
+        color: #FFFFFF;
+      }
+    }
+  }
+}
+
+.testimonials {
+  background-image: url("../img/dm22__image_15-min.jpg");
+  background-size: cover;
+  &__tab {
+    @include comp-tab(box);
+    @include func-row(g-xl);
+    align-content: center;
+    flex-direction: column-reverse;
+    img {
+      width: 100px;
+      border-radius: 50%;
+    }
+  }
+  &__link {
+    justify-content: center;
+    div {
+      padding: 0.3rem !important;
+      border-radius: 50% !important;
+      border-right-width: 0.0625rem !important;
+      border-left-width: 0.0625rem !important;
+      margin: 0 0.3rem;
+    }
+  }
+  &__content {
+    @include func-col(sm-6);
+    div {
+      text-align: center;
+      align-items: center;
+    }
+    
+  }
+}
+
+
+.footer {
+  background-color: #303030;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  &__container {
+    @include func-row(g-xl);
+    flex-direction: row;
+    color: #696969;
+  }
+  &__about, &__contact, &__comments, &__posts {
+    @include func-col(sm-6, lg-3);
+    margin-bottom: 2.5rem;
+    @media (max-width: func-container(sm) - 1px) {
+      width: 100%;
+    }
+    @media (min-width: func-container(sm)) {
+      padding-right: 2rem;
+    }
+    @media (min-width: func-container(lg)) {
+      margin-bottom: 0;
+    }
+    h3 {
+      font-family: 'Lora', serif;
+      color: #BCBCBC;
+      margin-bottom: 1.5rem;
+    }
+    li {
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      font-size: 0.85em;
+      a {
+        color: #BCBCBC;
+        &:hover {
+          color: #FFFFFF;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  &__contact {
+    div {
+      flex-direction: row;
+      div {
+        border: 0.0625rem solid #404040;
+        border-radius: 50%;
+        margin-right: 0.5rem;
+        &:hover {
+          background-color: #404040;
+          color: #FFFFFF;
+        }
+      }
+      i {
+        font-size: 1.3em;
+        padding: 0.5rem
+      }
+    }
+  }
+  &__posts {
+    margin-bottom: 0;
+  }
+  &__about {
+    img {
+      max-width: 5rem;
+      margin-bottom: 1.8rem;
+      opacity: 0.2;
+    }
+    p {
+      font-weight: 500;
+      font-size: 0.85em;
+    }
+    input {
+      background-color: transparent;
+      border: none;
+      outline: none;
+      border-bottom: 0.0625rem solid #404040;
+      padding: 0.75rem 0;
+      color: #BCBCBC;
+      &:hover, &:focus {
+        border-color: #BCBCBC;
+      }
+      &::placeholder {
+        color: #404040;
+      }
+    }
+    button {
+      font-family: 'Lora', serif;
+      border: 0.0625rem solid #404040;
+      border-radius: 1000rem;
+      background-color: transparent;
+      color: #BCBCBC;
+      padding: 0.75rem 1rem;
+      margin-top: 0.75rem;
+      &:hover {
+        background-color: #404040;
+        color: #FFFFFF;
+      }
+    }
+  }
+  &__copy {
+    width: 100%;
+    font-size: 0.85em;
+    border-top: 0.0625rem solid #404040;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    text-align: center;
+    @media (min-width: func-container(md)) {
+      text-align: left;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    a {
+      text-decoration: underline;
+      &:hover {
+        color: #FFFFFF;
+      }
+    }
+  }
+}
 
 
 // *********************************************************** VARIAVEIS JS

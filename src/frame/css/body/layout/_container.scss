@@ -1,0 +1,58 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:string';
+@use '../variables' as var;
+
+
+// ********************************************* version 1.0.0
+/* **************************************************************** CONTAINER */
+$containers: ('%container-f');
+@each $break in var.$breakpoints { 
+  $containers: list.append($containers, '%container-g-#{map.get($break, "name")}', $separator: comma);
+  $containers: list.append($containers, '%container-f-#{map.get($break, "name")}', $separator: comma);
+}
+#{$containers} {
+  width: 100%;
+  padding-right: var.$padding-default;
+  padding-left: var.$padding-default;
+}
+
+
+@each $break in var.$breakpoints {
+  @media (min-width: map.get($break, "container-width")) { 
+    $gradual: ();
+    $fluid: ();
+    $padd: ('%container-f');
+
+    @each $break-x in var.$breakpoints {
+
+      @if map.get($break-x, "container-width") >= map.get($break, "container-width") {
+        $gradual: list.append($gradual, '%container-g-#{map.get($break-x, "name")}' , $separator: comma);
+      }
+      @if map.get($break-x, "container-width") == map.get($break, "container-width") {
+        $fluid: list.append($fluid, '%container-f-#{map.get($break-x, "name")}' , $separator: comma);
+      }
+      @if map.get($break-x, "container-width") > map.get($break, "container-width") {
+        $padd: list.append($padd, '%container-f-#{map.get($break-x, "name")}' , $separator: comma);
+      }
+    }
+
+    #{$gradual}, #{$fluid} {
+      width: map.get($break, "content-width");
+      margin-right: auto;
+      margin-left: auto;
+      padding-right: 0;
+      padding-left: 0;
+    }
+
+    #{$padd} {
+      @if map.get($break, "padding") {
+        padding-right: map.get($break, "padding");
+        padding-left: map.get($break, "padding");
+      } @else {
+        padding-right: var.$padding-default;
+        padding-left: var.$padding-default;
+      }
+    }
+  }
+}

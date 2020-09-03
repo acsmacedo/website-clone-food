@@ -1,0 +1,22 @@
+@use 'sass:meta';
+@use 'sass:math';
+@use '../functions/components' as fcom;
+
+
+// ********************************************* version 1.0.0
+@mixin scroll-up($margin: null, $seletor: &) {
+  @if ($margin != null) and (meta.type-of($margin) != number) {
+    @error 'A variável "$margin" precisa ser do tipo "number"!';
+  }
+  
+  @if ($margin != null) and (not(math.is-unitless($margin))) {
+    @error 'Considere o valor da variável "$margin" em pixels, mas não coloque a unidade de medida!';
+  }
+
+  @if ($seletor != &) {
+    @error 'Não altere a variável "$seletor". Verique os argumentos passados!';
+  }
+  
+  @include fcom.update-list-components($seletor, "scroll-up");
+  @include fcom.update-list-components($margin, "scroll-up-options");
+}

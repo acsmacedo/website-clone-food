@@ -1,0 +1,11 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:string';
+@use 'sass:color';
+@use '../variables' as var;
+
+
+// ********************************************* version 1.0.0
+@function color-lightness($color, $value) {
+  @return color.scale($color, $lightness: 10% * $value);
+}

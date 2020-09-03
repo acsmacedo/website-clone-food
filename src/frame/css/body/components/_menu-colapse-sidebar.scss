@@ -1,0 +1,99 @@
+@use '../variables' as var;
+@use '../functions/components' as fcom;
+
+
+// ********************************************* version 1.0.0
+/* ********************************************* MENU */
+@mixin menu-colapse-sidebar($side: right, $seletor: &) {
+  @if $seletor != & {
+    @error 'Não altere a variável "$seletor". Verique os argumentos passados!';
+  }
+
+  @if ($side != top) and ($side != 'bottom') and ($side != 'right') and ($side != 'left') {
+    @error 'A variável "$side" aceita como argumentos: "top", "bottom", "right", "left"!';
+  }
+
+  $options: "#{var.$menu-colapse-width} #{$side}";
+  @include fcom.update-list-components($seletor, "menu-colapse-sidebar");
+  @include fcom.update-list-components($options, "menu-colapse-sidebar-options");
+  
+  @media (max-width: var.$menu-colapse-width) {
+    & > *:first-child {
+      display: none;
+    }
+  }
+
+  @media (min-width: var.$menu-colapse-width) {
+    & > *:last-child {
+      display: none;
+    }
+  }
+
+  $menu-colapse-used: true !global;
+}
+
+%menu-colapse-sidebar {
+  .menu-colapse-icon {
+    &::after {
+      content: "\2261";
+      font-size: 2em;
+    }
+  }
+
+  .menu-colapse-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var.$menu-colapse-overlay;
+    display: none;
+  }
+  
+  .menu-colapse-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    &::after {
+      content: '\2716';
+      padding: var.$padding-default;
+    }
+  }
+
+  .menu-colapse-content {
+    position: fixed;
+    background-color: var.$menu-colapse-back;
+    z-index: 1;
+    padding: var.$padding-default;
+    padding-top: var.$padding-default * 3;
+    box-shadow: 0 0 2rem 0 var.$menu-colapse-overlay;
+    overflow-y: scroll;
+    &::-webkit-scrollbar { 
+      width: 0px; 
+    }
+    &.menu-side-right {
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 70%;
+    }
+    &.menu-side-left {
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 70%;
+    }
+    &.menu-side-top {
+      top: 0;
+      left: 0;
+      height: 40%;
+      width: 100%;
+    }
+    &.menu-side-bottom {
+      bottom: 0;
+      left: 0;
+      height: 40%;
+      width: 100%;
+    }
+  }
+}

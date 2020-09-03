@@ -1,0 +1,54 @@
+@use 'sass:meta';
+@use 'sass:math';
+@use '../variables' as var;
+@use '../functions/components' as fcom;
+
+
+// ********************************************* version 1.0.0
+@mixin scroll-progress($type: window, $height: 0.5rem, $seletor: &) {
+  @if ($type != 'window') and ($type != 'element') {
+    @error 'A variável "$type" deve receber como parâmetro "window" ou "element"!';
+  }
+
+  @if (meta.type-of($height) != number) {
+    @error 'A variável "$height" precisa ser do tipo "number"!';
+  }
+
+  @if (math.is-unitless($height)) {
+    @error 'A variável "$height" precisa de uma unidade de medida"!';
+  }
+
+  @if ($seletor != &) {
+    @error 'Não altere a variável "$seletor". Verique os argumentos passados!';
+  }
+
+  @include fcom.update-list-components($seletor, "scroll-progress");
+  @include fcom.update-list-components($type, "scroll-progress-options");
+
+  .scroll-progress {
+    width: 100%;
+    height: $height;
+    background-color: var.$scroll-progress-back;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    > div {
+      width: 0;
+      height: $height;
+      background-color: var.$scroll-progress-color;
+    }
+  }
+  
+  @if ($type == 'element') {
+    position: relative;
+    > *:nth-child(2) {
+      margin-top: $height;
+      flex-wrap: nowrap;
+      overflow-y: scroll;
+    }
+    .scroll-progress {
+      position: absolute;
+    }
+  }
+}

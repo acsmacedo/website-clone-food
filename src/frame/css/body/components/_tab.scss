@@ -1,0 +1,128 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:string';
+@use '../variables' as var;
+@use '../functions/components' as fcom;
+
+
+// ********************************************* version 1.0.0
+/* **************************************************************** TAB */
+%tab-style {
+  > * {
+    color: var.$tab-color-text;
+  }
+  > :nth-child(1) {
+    flex-direction: row;
+    & > * {
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+      :nth-child(2) {
+        margin-left: 0.3rem;
+      }
+    }
+  }
+  > :nth-child(2) {
+    padding: 0.5rem 1rem;
+  }
+}
+
+%tab-style-line {
+  > :nth-child(1)::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: var.$tab-border-width;
+    position: relative;
+    bottom: var.$tab-border-width;
+    background-color: var.$tab-color-border;
+    z-index: -1;
+  }
+  > :nth-child(1) > * {
+    border-bottom: var.$tab-border-width solid var.$tab-color-border;
+    &:hover {
+      border-bottom-color: var.$tab-color-text;
+    }
+  }
+  > :nth-child(1) > *[data-active] {
+    color: var.$tab-color;
+    border-bottom-color: var.$tab-color;
+  }
+} 
+
+%tab-style-box {
+  > :nth-child(1) > :first-child {
+    border-radius: var.$tab-border-radius 0 0 var.$tab-border-radius;
+  }
+  > :nth-child(1) > :last-child {
+    border-radius: 0 var.$tab-border-radius var.$tab-border-radius 0;
+  }
+  > :nth-child(1) > * {
+    border: var.$tab-border-width solid var.$tab-color-border;
+    border-right-width: 0;
+    &:last-child {
+      border-right-width: var.$tab-border-width;
+    }
+    &:hover {
+      background-color: var.$tab-color-hover;
+    }
+  }
+  > :nth-child(1) > *[data-active] {
+    color: var.$tab-color-back;
+    background-color: var.$tab-color;
+    border-color: var.$tab-color;
+    & + * {
+      border-left-width: 0;
+    }
+  }
+}
+
+%tab-style-folder {
+  > :nth-child(1)::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: var.$tab-border-width;
+    position: relative;
+    bottom: var.$tab-border-width;
+    background-color: var.$tab-color;
+  }
+  > :nth-child(1) > * {
+    border: var.$tab-border-width solid var.$tab-color-border;
+    border-right: none;
+    &:last-child {
+      border-right: var.$tab-border-width solid var.$tab-color-border;
+    }
+    &:hover {
+      background-color: var.$tab-color-hover;
+    }
+  }
+  > :nth-child(1) > [data-active] {
+    color: var.$tab-color;
+    border: var.$tab-border-width solid var.$tab-color;
+    border-bottom-color: var.$tab-color-back;
+    z-index: 1;
+    & + * {
+      border-left-width: 0;
+    }
+    &:hover {
+      background-color: transparent;
+    }
+  }
+  > :nth-child(2) {
+    border: var.$tab-border-width solid var.$tab-color;
+    border-top: none;
+    position: relative;
+    bottom: var.$tab-border-width * 2;
+    z-index: 2;
+  }
+}
+
+@mixin tab($style: null, $align: flex-start, $seletor: &) {
+  @include fcom.update-list-components($seletor, "tab");
+  
+  @if $style {
+    @extend %tab-style;
+    @extend %tab-style-#{$style}; 
+  }
+}

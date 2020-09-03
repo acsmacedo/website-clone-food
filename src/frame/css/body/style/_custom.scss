@@ -1,0 +1,85 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:string';
+@use '../variables' as var;
+
+
+// ********************************************* version 1.0.0
+/* ********************************************* CUSTOM */
+%table-line {
+  thead {
+    background-color: var.$table-color;
+  }
+  &, tr {
+    border-bottom: 0.0625rem solid func-color-lightness(var.$table-color, 2);
+  }
+  th, td {
+    padding: 0.4em 0.2em;
+  }
+  tbody tr:hover {
+    background-color: func-color-lightness(var.$table-color, 4);
+  }
+}
+
+
+%table-striped {
+  th, td {
+    padding: 0.4em 0.2em;
+  }
+  tbody tr:nth-child(odd) {
+    background-color: func-color-lightness(var.$table-color, 4);
+  }
+  tbody tr:hover {
+    background-color: var.$table-color;
+  }
+}
+
+
+
+
+%menu-colapse-line {
+  flex-direction: column;
+  > * {
+    padding: 0.5rem 1rem;
+    border-bottom: var.$menu-border-width solid var.$menu-color-border;
+    color: var.$menu-color-text;
+    &:hover {
+      border-color: var.$menu-color-text;
+    }
+  }
+}
+
+%menu-colapse-box {
+  flex-direction: column;
+  > * {
+    padding: 0.5rem 1rem;
+    border: var.$menu-border-width solid var.$menu-color-border;
+    border-radius: var.$menu-border-radius;
+    color: var.$menu-color-text;
+    margin-bottom: 0.25rem;
+    &:hover {
+      border-color: var.$menu-color-text;
+    }
+  }
+}
+
+%menu-colapse-folder {
+  flex-direction: column;
+  > * {
+    padding: 0.5rem 1rem;
+    border: var.$menu-border-width solid var.$menu-color-border;
+    border-bottom-width: 0;
+    color: var.$menu-color-text;
+    &:hover {
+      border-color: var.$menu-color-text;
+      border-bottom-width: var.$menu-border-width;
+      & ~ * {
+        border-top-width: 0;
+        border-bottom-width: var.$menu-border-width;
+      }
+    }
+  }
+  > :last-child {
+    border-bottom-width: var.$menu-border-width;
+  }
+}

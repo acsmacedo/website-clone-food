@@ -1,0 +1,165 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:string';
+@use '../variables' as var;
+@use '../functions/components' as fcom;
+
+
+// ********************************************* version 1.0.0
+/* **************************************************************** CAROUSEL */
+%carousel-style {
+  > :first-child {
+    position: relative;
+    & > * {
+      position: absolute;
+      top: 0;
+    }
+  }
+  > :last-child {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+  }
+}
+
+%carousel-style-line{
+  > nav > :first-child, > nav > :last-child {
+    color: var.$carousel-color-text;
+    margin: 0 0.7rem;
+  }
+  > nav > :first-child::after {
+    content: '\2190';
+    position: relative;
+    top: 0.03rem;
+    font-size: 1.4em;
+  }
+  > nav > :last-child::after {
+    content: '\2192';
+    position: relative;
+    top: 0.03rem;
+    font-size: 1.4em;
+  }
+  > nav :nth-child(2) {
+    flex-direction: row;
+  }
+  > nav :nth-child(2) > div {
+    height: 0.3rem;
+    width: 2.5rem;
+    background-color: var.$carousel-color-border;
+    margin: 0 0.2rem;
+    &:hover {
+      background-color: var.$carousel-color-text;
+    }
+    &[data-active] {
+      background-color: var.$carousel-color;
+    }
+  }
+}
+
+%carousel-style-box {
+  > nav > :first-child, > nav > :last-child {
+    color: var.$carousel-color-text;
+    margin: 0 0.7rem;
+  }
+  > nav > :first-child::after {
+    content: '\25C4';
+    position: relative;
+    top: 0.02rem;
+  }
+  > nav > :last-child::after {
+    content: '\25BA';
+    position: relative;
+    top: 0.02rem;
+  }
+  > nav :nth-child(2) {
+    flex-direction: row;
+  }
+  > nav :nth-child(2) > div {
+    height: 1rem;
+    width: 1rem;
+    border-radius: var.$carousel-border-radius / 2;
+    margin: 0 0.2rem;
+    border: var.$carousel-border-width solid var.$carousel-color-border;
+    &:hover {
+      background-color: var.$carousel-color-hover;
+    }
+    &[data-active] {
+      background-color: var.$carousel-color;
+      border-color: var.$carousel-color;
+    }
+  }
+}
+
+%carousel-style-folder {
+  counter-reset: my-counter;
+  > nav > :first-child, > nav > :last-child {
+    height: 1.2rem;
+    width: 1.2rem;
+    color: var.$carousel-color-text;
+    border: var.$carousel-border-width solid var.$carousel-color-border;
+  }
+  > nav > :first-child {
+    border-right-width: 0;
+  }
+  > nav > :last-child {
+    border-left-width: 0;
+  }
+  > nav > :first-child::after {
+    content: '\2770 \2770'; 
+    position: relative;
+    top: 0.15rem;
+    text-align: center;
+    font-size: 0.5em;
+  }
+  > nav > :last-child::after {
+    content: '\2771 \2771';
+    position: relative;
+    top: 0.2rem;
+    text-align: center;
+    font-size: 0.5em;
+  }
+  > nav > :nth-child(2) {
+    flex-direction: row;
+  }
+  > nav :nth-child(2) > div {
+    height: 1.2rem;
+    width: 1.2rem;
+    border: var.$carousel-border-width solid var.$carousel-color-border;
+    color: var.$carousel-color-text;
+    border-right-width: 0;
+    &:last-child {
+      border-right-width: var.$carousel-border-width;
+    }
+    &::before {
+      counter-increment: my-counter;
+      content: counter(my-counter);
+      position: relative;
+      top: 0.2rem;
+      font-size: 0.7em;
+      text-align: center;
+    }
+    &:hover {
+      background-color: var.$carousel-color-hover;
+    }
+    &[data-active] {
+      border-right-width: var.$carousel-border-width;
+      color: var.$carousel-color;
+      border-color: var.$carousel-color;
+      &:hover {
+        background-color: transparent;
+      }
+      & + * {
+        border-left-width: 0;
+      }
+    }
+  }
+}
+
+@mixin carousel($style: null, $seletor: &) {
+  @include fcom.update-list-components($seletor, "carousel");
+  @if $style {
+    @extend %carousel-style;
+    @extend %carousel-style-#{$style}; 
+  }
+}

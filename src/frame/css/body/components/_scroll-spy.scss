@@ -1,0 +1,11 @@
+@use '../functions/components' as fcom;
+
+
+// ********************************************* version 1.0.0
+@mixin scroll-spy($seletor: &) {
+  @if ($seletor != &) {
+    @error 'Não altere a variável "$seletor". Verique os argumentos passados!';
+  }
+  
+  @include fcom.update-list-components($seletor, "scroll-spy");
+}

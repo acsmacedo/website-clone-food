@@ -1,0 +1,96 @@
+// ********************************************* BREAKPOINTS
+$breakpoints: (
+  (
+    "name": sm, "container-width": 576px, "content-width": 540px,
+    "columns": 12, "gutters": 1rem, "padding": null
+  ), (
+    "name": md, "container-width": 768px, "content-width": 720px,
+    "columns": 12, "gutters": 1rem, "padding": null
+  ), (
+    "name": lg, "container-width": 960px, "content-width": 920px,
+    "columns": 12, "gutters": 1rem, "padding": null
+  ), (
+    "name": xl, "container-width": 1200px, "content-width": 1140px,
+    "columns": 12, "gutters": 1rem, "padding": null
+  )
+);
+
+
+// ********************************************* PADDING DEFAULT
+$padding-default: 1rem;
+
+
+// ********************************************* COLORS
+$primary-color: #3273DC;
+$black-1: #4E4E4E;
+$black-2: #929394;
+$black-3: #B8B9BB;
+$black-4: #D1D2D4;
+$black-5: #EFEFEF;
+$border-width: 0.0625rem;
+$border-radius: 0.5rem;
+
+// ********************************************* ELEMENTS
+// ********************************************* TABLE
+$table-color: $primary-color;
+$table-color-complement: $primary-color;
+
+
+
+// ********************************************* COMPONENTS
+// ********************************************* TAB
+$tab-color: $primary-color;
+$tab-color-text: $black-1;
+$tab-color-border: $black-3;
+$tab-color-hover: $black-5;
+$tab-color-back: #FFFFFF;
+$tab-border-width: $border-width;
+$tab-border-radius: $border-radius;
+
+// ********************************************* ACCORDION
+$accordion-color: $primary-color;
+$accordion-color-text: $black-1;
+$accordion-color-border: $black-3;
+$accordion-color-hover: $black-5;
+$accordion-color-back: #FFFFFF;
+$accordion-border-width: $border-width;
+$accordion-border-radius: $border-radius;
+
+// ********************************************* CAROUSEL
+$carousel-color: $primary-color;
+$carousel-color-text: $black-1;
+$carousel-color-border: $black-3;
+$carousel-color-hover: $black-5;
+$carousel-color-back: #FFFFFF;
+$carousel-border-width: $border-width;
+$carousel-border-radius: $border-radius;
+
+
+// ********************************************* MENU
+$menu-colapse-back: #FFFFFF;
+$menu-colapse-overlay: rgba(0, 0, 0, 0.5);
+$menu-colapse-width: 767px;
+
+
+// ********************************************* MODAL
+$modal-color: $primary-color;
+$modal-color-text: $black-1;
+$modal-color-border: $black-3;
+$modal-color-hover: $black-5;
+$modal-color-back: #FFFFFF;
+$modal-color-overlay: rgba(0, 0, 0, 0.5);
+$modal-border-width: $border-width;
+$modal-border-radius: $border-radius;
+
+
+// ********************************************* TOOLTIPS
+$tooltips-color: $black-1;
+$tooltips-color-text: $black-1;
+$tooltips-color-border: $black-3;
+$tooltips-color-back: #FFFFFF;
+$tooltips-border-radius: $border-radius;
+
+
+// ********************************************* SCROLL PROGRESS
+$scroll-progress-color: $primary-color;
+$scroll-progress-back: $black-3;

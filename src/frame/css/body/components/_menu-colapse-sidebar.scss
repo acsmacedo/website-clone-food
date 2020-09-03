@@ -48,6 +48,7 @@
     width: 100%;
     background-color: var.$menu-colapse-overlay;
     display: none;
+    z-index: 9;
   }
   
   .menu-colapse-close {
@@ -63,7 +64,7 @@
   .menu-colapse-content {
     position: fixed;
     background-color: var.$menu-colapse-back;
-    z-index: 1;
+    z-index: 10;
     padding: var.$padding-default;
     padding-top: var.$padding-default * 3;
     box-shadow: 0 0 2rem 0 var.$menu-colapse-overlay;
@@ -75,7 +76,7 @@
       top: 0;
       right: 0;
       height: 100%;
-      width: 70%;
+      width: 100%;
     }
     &.menu-side-left {
       top: 0;

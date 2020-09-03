@@ -49,12 +49,12 @@ export function menuColapseSidebar() {
         overlay.style.display = 'none';
         contentClone.classList.add('hide');
       })
-      /*
+      
       contentClone.addEventListener('click', function() {
         overlay.style.display = 'none';
         contentClone.classList.add('hide');
       })
-      
+      /*
       if (triggerStop.length > 0) {
         for(let i = 0; i <triggerStop.length; i++) {
           triggerStop[i].addEventListener('click', function(e) {

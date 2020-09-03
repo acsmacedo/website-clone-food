@@ -4,43 +4,83 @@
 // *********************************************************** MY CSS
 body {
   font-family: 'Poppins', sans-serif;
-  
+  color: #484E51;
+  background-color: #F9F9F9;
 }
 
 section {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  @media (min-width: func-container(sm)) {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
 }
 
 p {
   font-size: 0.9em;
+  font-weight: 300;
+  line-height: 1.6em;
 }
 
-.posts, .cardapio, .info, .testimonials {
+
+.about, .posts, .cardapio, .info, .testimonials {
   &__title {
-    @include func-row(g-sm);
     text-align: center;
     span {
       font-family: 'Lora', serif;
-      color: #484E51;
     }
     h2 {
       font-family: 'Lora', serif;
       font-weight: 500;
-      font-size: 2.7em;
+      font-size: 1.8em;
       color: #282828;
       margin-top: 0.5rem;
+      @media (min-width: func-container(sm)) {
+        font-size: 2.7em;
+      }
       &::after {
         content: "......";
         display: block;
-        font-size: 0.5em;
+        font-size: 24px;
         font-weight: 400;
         letter-spacing: 0.2em;
         margin-bottom: 1rem;
       }
     }
-    p {
-      color: #484E51;
+  }
+}
+
+.posts__item, .header__container, .cardapio__footer {
+  a {
+    border: 0.0625rem solid #282828;
+    border-radius: 1000rem;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.6em;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    &:hover {
+      background-color: #282828;
+      color: #FFFFFF;
+    }
+  }
+}
+
+.info__title {
+  div {
+    font-size: 2em  ;
+    color: #FFFFFF;
+    border: 0.0625rem solid #FFFFFF;
+    align-self: center;
+    border-radius: 50%;
+    margin-top: 1.5rem;
+    &:hover {
+      background-color: #FFFFFF;
+      color: #282828;
+    }
+    i {
+      padding: 1rem;
     }
   }
 }
@@ -51,6 +91,7 @@ p {
   position: fixed;
   width: 100%;
   top: 0;
+  z-index: 1;
   &__container {
     @include func-row(g-xl);
     flex-direction: row;
@@ -91,17 +132,54 @@ p {
   }
 }
 
+.menu-colapse-content {
+  background-color: #282828 !important;
+  flex-direction: column;
+  text-align: center;
+
+  color: #696969;
+  font-size: 1.5em;
+  ul {
+    margin-bottom: 1.5rem;
+  }
+  li {
+    padding: 0.5rem;
+  }
+  li:hover {
+    color: #FFFFFF;
+  }
+  p {
+    font-size: 0.6em;
+  }
+  div {
+    flex-direction: row;
+    justify-content: center;
+    //margin-top: 1rem;
+    div {
+      border: 0.0625rem solid #696969;
+      border-radius: 50%;
+      margin: 1.5rem 0.3rem 0 0.3rem;
+      &:hover {
+        background-color: #696969;
+        color: #282828;
+      }
+    }
+    i {
+      padding: 0.5rem;
+    }
+  }
+}
+
 
 .header {
-  width: 100%;
-  height: 100vh;
   background-image: url("../img/dm22__image_01-min.jpg");
   background-size: cover;
   color: #FFFFFF;
-  justify-content: center;
   text-align: center;
   &__container {
     @include func-row(g-md);
+    height: 100vh;
+    justify-content: center;
     img {
       max-width: 6rem;
       margin: 0 auto;
@@ -111,7 +189,7 @@ p {
       font-size: 2.5em;
       margin-top: 1.5rem;
       @media (min-width: func-container(sm)) {
-        font-size: 3.5em;
+        font-size: 3em;
       }
       &::after {
         content: "......";
@@ -127,16 +205,15 @@ p {
       font-weight: 400;
       margin-bottom: 1.5rem;
       line-height: 1.5em;
+      font-size: 0.9rem;
+      opacity: 0.7;
+      @media (min-width: func-container(sm)) {
+        font-size: 1.1rem;
+      }
     }
     a {
       border: 0.0625rem solid #FFFFFF;
-      border-radius: 1000rem;
       align-self: center;
-      padding: 0.75rem 2rem;
-      font-size: 0.8em;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
       &:hover {
         background-color: #FFFFFF;
         color: #282828;
@@ -148,16 +225,21 @@ p {
       bottom: 2rem;
       left: calc(50% - 12px);
       font-size: 1.5em;
+      opacity: 0.5;
+      &:hover {
+        opacity: 1;
+      }
     }
   }
 }
 
+
 .about {
-  background-image: url("../img/dm22__image_15-min.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    url("../img/dm22__image_15-min.jpg");
   background-size: cover;
   &__container {
     @include func-row(g-xl);
-    
     @media (min-width: func-container(md)) {
       flex-direction: row;
     }
@@ -165,7 +247,7 @@ p {
   img {
     @include func-col(md-6);
   }
-  &__text {
+  &__title {
     @include func-col(md-6);
     justify-content: center;
     text-align: center;
@@ -175,34 +257,14 @@ p {
       padding-left: 2rem;
       margin-top: 0;
     }
-    span {
-      font-family: 'Lora', serif;
-      color: #484E51;
-    }
-    h2 {
-      font-family: 'Lora', serif;
-      font-weight: 500;
-      font-size: 2.7em;
-      color: #282828;
-      margin-top: 0.5rem;
-      &::after {
-        content: "......";
-        display: block;
-        font-size: 0.5em;
-        font-weight: 400;
-        letter-spacing: 0.2em;
-        margin-bottom: 1rem;
-      }
-    }
-    p {
-      color: #484E51;
-    }
   }
 }
 
 
 .posts {
-  background-color: #F9F9F9;
+  &__title {
+    @include func-row(g-sm);
+  }
   &__body {
     @include func-row(g-xl);
     @include func-clear-col((md, 3n));
@@ -213,17 +275,30 @@ p {
   &__item {
     @include func-col(md-gutters-4);
     margin-top: 3rem;
-    text-align: center;
-    @media (min-width: func-container(md)) {
-      text-align: left;
+    &:hover img {
+      transform: scale(1.05, 1.05);
+    }
+    > p {
+      padding: 1rem;
+    }
+    a {
+      margin-left: 1rem;
+      align-self: flex-start;
+    }
+  }
+  &__img {
+    position: relative;
+    img {
+      transition: transform 0.5s;
+      max-height: 20rem;
     }
     div {
-      background-size: cover;
-      background-position: center;
-      height: 20rem;
-      padding: 1rem;
-      justify-content: flex-end;
+      position: absolute;
+      width: 100%;
+      padding: 3rem 1rem 1rem 1rem;
+      bottom: 0;
       color: #FFFFFF;
+      background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
       span {
         font-family: 'Lora', serif;
         font-size: 1.4em;
@@ -231,36 +306,6 @@ p {
       p {
         opacity: 0.7;
       }
-    }
-    > p {
-      padding: 1rem;
-    }
-    a {
-      border: 0.0625rem solid #282828;
-      border-radius: 1000rem;
-      align-self: center;
-      padding: 0.5rem 1.5rem;
-      margin-left: 1rem;
-      font-size: 0.6em;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      @media (min-width: func-container(md)) {
-        align-self: flex-start;
-      }
-      &:hover {
-        background-color: #282828;
-        color: #FFFFFF;
-      }
-    }
-    &:nth-child(1) div {
-      background-image: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0)), url("../img/dm22__image_04-min.jpg");
-    }
-    &:nth-child(2) div  {
-      background-image: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0)), url("../img/dm22__image_05-min.jpg");
-    }
-    &:nth-child(3) div  {
-      background-image: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0)), url("../img/dm22__image_06-min.jpg");
     }
   }
 }
@@ -275,19 +320,9 @@ p {
     h2, span, p {
       color: #FFFFFF;
     }
-    div {
-      font-size: 2em  ;
-      color: #FFFFFF;
-      border: 0.0625rem solid #FFFFFF;
-      align-self: center;
-      border-radius: 50%;
-      margin-top: 1.5rem;
-      i {
-        padding: 1rem;
-      }
-    }
   }
 }
+
 
 .cardapio {
   margin-top: -15rem;
@@ -297,69 +332,87 @@ p {
     box-shadow: 0 0 3rem rgba(0, 0, 0, 0.4);
   }
   &__title {
+    @include func-row(g-sm);
     margin-top: 6rem;
   }
   &__body {
     @include func-row(g-xl);
     align-items: center;
+    justify-content: center;
+    padding: 2rem;
   }
   &__tab {
     @include comp-tab(line);
+    @include func-col(sm-12);
     align-items: center;
-    margin: 2rem 0;
+    margin: 0 0 2rem 0;
   }
   &__footer {
     text-align: center;
-    margin-bottom: 6rem;
+    margin-bottom: 4rem;
     a {
-      border: 0.0625rem solid #282828;
-      border-radius: 1000rem;
       align-self: center;
-      padding: 0.5rem 1.5rem;
-      margin-left: 1rem;
-      font-size: 0.6em;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
       margin-top: 1rem;
-      &:hover {
-        background-color: #282828;
-        color: #FFFFFF;
-      }
     }
   }
 }
 
+
 .testimonials {
-  background-image: url("../img/dm22__image_15-min.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    url("../img/dm22__image_15-min.jpg");
   background-size: cover;
+  &__title {
+    @include func-row(g-sm);
+  }
   &__tab {
     @include comp-tab(box);
-    @include func-row(g-xl);
     align-content: center;
     flex-direction: column-reverse;
-    img {
-      width: 100px;
-      border-radius: 50%;
-    }
   }
   &__link {
     justify-content: center;
+    margin-top: 1rem;
     div {
-      padding: 0.3rem !important;
+      padding: 0.4rem !important;
       border-radius: 50% !important;
       border-right-width: 0.0625rem !important;
       border-left-width: 0.0625rem !important;
-      margin: 0 0.3rem;
+      margin: 0 0.2rem !important;
     }
   }
   &__content {
     @include func-col(sm-6);
-    div {
-      text-align: center;
-      align-items: center;
+    text-align: center;
+    p {
+      margin: 1rem 0;
+      position: relative;
+      padding: 0 3rem;
+      &::before, &::after {
+        font-family: 'Lora', serif;
+        font-size: 7em;
+        color: #BCBCBC;
+        position: absolute;
+      }
+      &::before {
+        content: '\201C';
+        top: 0; 
+        left: 0;
+      }
+      &::after {
+        content: '\201D';
+        bottom: -3rem;
+        right: 0;
+      }
     }
-    
+    img {
+      width: 5rem;
+      margin: 0 auto;
+      border-radius: 50%;
+    }
+    span {
+      font-family: 'Lora', serif;
+    }
   }
 }
 

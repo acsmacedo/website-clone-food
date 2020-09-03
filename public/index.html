@@ -20,14 +20,25 @@
         <div><i class="lab la-google-plus"></i></div>
         <div><i class="lab la-instagram"></i></div>
         <div class="menu__links">
-          <ul>
-            <li><a href="">Home</a></li>
-            <li><a href="">Home</a></li>
-            <li><a href="">Home</a></li>
-            <li><a href="">Home</a></li>
-            <li><a href="">Home</a></li>
-            <li><a href="">Home</a></li>
-          </ul>
+          <div>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#posts">Posts</a></li>
+              <li><a href="#cardapio">Menu</a></li>
+              <li><a href="#testimonials">Testimonials</a></li>
+              <li><a href="#contact">Contact</a></li>
+              
+            </ul>
+            <p>© 2020, Norebro theme by <a href="#">Colabrio</a> | <a href="#">Privacy policy</a> | <a href="#">Sitemap</a></p>
+            <p>All rights reserved.</p>
+            <div>
+              <div><i class="lab la-facebook-f"></i></div>
+              <div><i class="lab la-google-plus"></i></div>
+              <div><i class="lab la-instagram"></i></div>
+            </div>
+          </div>
+         
         </div>
       </div>
     </div>
@@ -35,7 +46,7 @@
 
 
   <header class="header">
-    <div class="header__container">
+    <div class="header__container" id="home">
       <img src="./assets/img/Vector-Smart-Object.png" alt="">
       <h1>Börups Shalé Restaurant</h1>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed iure repellendus molestiae quasi ab natus autem, veritatis quisquam error facilis quibusdam.</p>
@@ -45,10 +56,10 @@
   </header>
 
 
-  <section class="about">
+  <section class="about" id="about">
     <div class="about__container">
       <img src="./assets/img/dm22__image_02-min.jpg" alt="">
-      <div class="about__text">
+      <div class="about__title">
         <span>Ching are good enough</span>
         <h2>Shankle sausage burgdoggen, meatloaf drumstick beef chuck</h2>
         <p>Make it pop at the end of the day put a stake in the ground. Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. </p>
@@ -57,7 +68,7 @@
   </section>
 
 
-  <section class="posts">
+  <section class="posts" id="posts">
     <div class="posts__title">
       <span>Only organic & natural ingredients</span>
       <h2>Proud of what we make</h2>
@@ -66,27 +77,36 @@
 
     <div class="posts__body">
       <div class="posts__item">
-        <div>
-          <span>Traditionally Prepared Boiled Bacon</span>
-          <p>Here goes a subheading</p>
+        <div class="posts__img">
+          <img src="./assets/img/dm22__image_04-min.jpg" alt="">
+          <div>
+            <span>Traditionally Prepared Boiled Bacon</span>
+            <p>Here goes a subheading</p>
+          </div>
         </div>
         <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring.</p>
         <a href="#">Read more</a>
       </div>
 
       <div class="posts__item">
-        <div>
-          <span>Traditionally Prepared Boiled Bacon</span>
-          <p>Here goes a subheading</p>
+        <div class="posts__img">
+          <img src="./assets/img/dm22__image_05-min.jpg" alt="">
+          <div>
+            <span>Traditionally Prepared Boiled Bacon</span>
+            <p>Here goes a subheading</p>
+          </div>
         </div>
         <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring.</p>
         <a href="#">Read more</a>
       </div>
 
       <div class="posts__item">
-        <div>
-          <span>Traditionally Prepared Boiled Bacon</span>
-          <p>Here goes a subheading</p>
+        <div class="posts__img">
+          <img src="./assets/img/dm22__image_06-min.jpg" alt="">
+          <div>
+            <span>Traditionally Prepared Boiled Bacon</span>
+            <p>Here goes a subheading</p>
+          </div>
         </div>
         <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring.</p>
         <a href="#">Read more</a>
@@ -106,7 +126,7 @@
 
 
   <section class="cardapio">
-    <div class="cardapio__container">
+    <div class="cardapio__container"id="cardapio">
       <div class="cardapio__title">
         <span>Ching are good enough</span>
         <h2>Restaurant Menu</h2>
@@ -121,43 +141,14 @@
           </div>
           <div class="cardapio__content">
             <div>
-              <div>
-                <img src="" alt="">
-                <div>
-                  <p>Ravioli with cheeze, appr. 30 min</p>
-                  <span>£23</span>
-                  <p>With goats cheese, black pepper, served with beef ragout</p>
-                  <span>new</span>
-                </div>
-              </div>
-              
             </div>
   
             <div>
-              <div>
-                <img src="" alt="">
-                <div>
-                  <p>YYYYYYYYYYYYYYYYYYY</p>
-                  <span>£23</span>
-                  <p>With goats cheese, black pepper, served with beef ragout</p>
-                  <span>new</span>
-                </div>
-              </div>
-              
             </div>
   
             <div>
-              <div>
-                <img src="" alt="">
-                <div>
-                  <p>XXXXXXXXXXXXXXXXXXXXXXXX</p>
-                  <span>£23</span>
-                  <p>With goats cheese, black pepper, served with beef ragout</p>
-                  <span>new</span>
-                </div>
-              </div>
-              
             </div>
+
           </div>
         </div>
         <div class="cardapio__footer">
@@ -171,7 +162,7 @@
   </section>
 
 
-  <section class="testimonials">
+  <section class="testimonials" id="testimonials">
     <div class="testimonials__title">
       <span>Ching are good enough</span>
       <h2>Client's Reviews</h2>
@@ -187,28 +178,28 @@
       <div class="testimonials__content">
         <div>
           <img src="./assets/img/nor__avatar__02__min.jpg" alt="">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem aliquam delectus distinctio unde quis minima doloremque blanditiis eos dolor. Quo beatae debitis voluptatum natus porro sunt nulla, quod minima quia.</p>
-          <p>Fulano1</p>
-          <s>Cargo</s>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem aliquam delectus distinctio unde quis minima quis minima doloremque doloremque blanditiis eos dolor.</p>
+          <span><strong>Marco Guerra</strong></span>
+          <span>Web developer</span>
         </div>
         <div>
           <img src="./assets/img/nor__avatar__03__min.jpg" alt="">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem aliquam delectus distinctio unde quis minima doloremque blanditiis eos dolor. Quo beatae debitis voluptatum natus porro sunt nulla, quod minima quia.</p>
-          <p>Fulano2</p>
-          <s>Cargo</s>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem aliquam delectus distinctio unde quis minima quis minima doloremque doloremque blanditiis eos dolor.</p>
+          <span><strong>Andrew McGregor</strong></span>
+          <span>Ui/Ux Designer</span>
         </div>
         <div>
           <img src="./assets/img/dm16__image_10-min.png" alt="">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem aliquam delectus distinctio unde quis minima doloremque blanditiis eos dolor. Quo beatae debitis voluptatum natus porro sunt nulla, quod minima quia.</p>
-          <p>Fulano3</p>
-          <s>Cargo</s>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem aliquam delectus distinctio unde quis minima quis minima doloremque doloremque blanditiis eos dolor.</p>
+          <span><strong>Stacey Pickering</strong></span>
+          <span>Product manager</span>
         </div>
       </div>
     </div>
     
   </section>
 
-  <footer class="footer">
+  <footer class="footer" id="contact">
     <div class="footer__container">
 
       <div class="footer__about">

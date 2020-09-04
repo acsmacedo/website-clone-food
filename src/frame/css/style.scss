@@ -4,7 +4,7 @@
 // *********************************************************** MY CSS
 body {
   font-family: 'Poppins', sans-serif;
-  color: #484E51;
+  color: #696969;
   background-color: #F9F9F9;
 }
 
@@ -24,7 +24,7 @@ p {
 }
 
 
-.about, .posts, .cardapio, .info, .testimonials {
+.about, .posts, .cardapio, .info, .testimonials, .form {
   &__title {
     text-align: center;
     span {
@@ -91,7 +91,7 @@ p {
   position: fixed;
   width: 100%;
   top: 0;
-  z-index: 1;
+  z-index: 5;
   &__container {
     @include func-row(g-xl);
     flex-direction: row;
@@ -99,11 +99,14 @@ p {
     align-items: center;
   }
   &__logo {
-    img {
-      max-width: 5rem;
-      opacity: 0.2;
+    p {
+      font-family: 'Lora', serif;
+      font-size: 1.2em;
+      color: #696969;
+      font-variant: small-caps;
+      letter-spacing: 0.2em;
       &:hover {
-        opacity: 1;
+        color: #FFFFFF;
       }
     }
   }
@@ -172,18 +175,15 @@ p {
 
 
 .header {
-  background-image: url("../img/dm22__image_01-min.jpg");
+  background-image: url("../img/header.jpg");
   background-size: cover;
+  background-position: center;
   color: #FFFFFF;
   text-align: center;
   &__container {
     @include func-row(g-md);
     height: 100vh;
     justify-content: center;
-    img {
-      max-width: 6rem;
-      margin: 0 auto;
-    }
     h1 {
       font-family: 'Lora', serif;
       font-size: 2.5em;
@@ -236,7 +236,7 @@ p {
 
 .about {
   background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
-    url("../img/dm22__image_15-min.jpg");
+    url("../img/background.jpg");
   background-size: cover;
   &__container {
     @include func-row(g-xl);
@@ -291,6 +291,7 @@ p {
     img {
       transition: transform 0.5s;
       max-height: 20rem;
+      object-position: bottom;
     }
     div {
       position: absolute;
@@ -312,8 +313,9 @@ p {
 
 
 .info {
-  background-image: url("../img/dm22__image_07-min-1.jpg");
+  background-image: url("../img/info.jpg");
   background-size: cover;
+  background-position: center;
   padding-bottom: 13.5rem;
   &__title {
     @include func-row(g-md);
@@ -336,16 +338,86 @@ p {
     margin-top: 6rem;
   }
   &__body {
-    @include func-row(g-xl);
+    
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    @media(min-width: func-container(md)) {
+      
+    }
+    
   }
   &__tab {
     @include comp-tab(line);
-    @include func-col(sm-12);
+    width: 100%;
     align-items: center;
     margin: 0 0 2rem 0;
+  }
+  &__links {
+    font-size: 0.8em;
+    margin-top: 1rem;
+    @media(min-width: func-container(md)) {
+      margin-top: 0;
+    }
+  }
+  &__content {
+    width: 100%;
+    @media(min-width: func-container(md)) {
+      width: 70%; 
+    }
+  }
+  &__item {
+    
+    
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 1rem;
+    
+    @media(min-width: func-container(sm)) {
+      align-items: center;
+      flex-direction: row; 
+    }
+    img {
+      width: 70px;
+      height: 70px;
+    }
+    > div {
+      justify-content: center;
+      margin-left: 1rem;
+      width: calc(100% - 86px);
+      div {
+        flex-direction: row;
+        display: block;
+        @media(min-width: func-container(sm)) {
+          justify-content: space-between;  
+          display: flex;
+        }
+        
+        span:nth-child(1) {
+          font-family: 'Lora', serif;
+          font-weight: 700;
+          color: #282828;
+          position: relative;
+          
+          &::after {
+            content: " ......";
+            margin-left: 0.5rem;
+            @media(min-width: func-container(sm)) {
+              content: " ........................................................................................................................";
+              position: absolute; 
+            }
+          }
+        }
+        span:nth-child(2) {
+          background-color: #FFFFFF;
+          z-index: 1;
+          
+          padding-left: 0.5rem; 
+        }
+      }
+      > p {
+        font-size: 0.8em;
+      }
+    }
   }
   &__footer {
     text-align: center;
@@ -360,7 +432,7 @@ p {
 
 .testimonials {
   background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
-    url("../img/dm22__image_15-min.jpg");
+    url("../img/background.jpg");
   background-size: cover;
   &__title {
     @include func-row(g-sm);
@@ -405,10 +477,17 @@ p {
         right: 0;
       }
     }
-    img {
-      width: 5rem;
+    > div > div {
+      width: 6rem;
+      height: 6rem;
       margin: 0 auto;
       border-radius: 50%;
+      align-content: center;
+      img {
+        width: 130%;
+        align-self: center;
+        
+      }
     }
     span {
       font-family: 'Lora', serif;
@@ -417,14 +496,86 @@ p {
 }
 
 
+.form {
+  background-image: url("../img/form.jpg");
+  background-size: cover;
+  background-position: center;
+  &__title {
+    @include func-row(g-sm);
+    span, h2 {
+      color: #FFFFFF;
+    }
+  }
+  &__content {
+    @include func-row(g-lg);
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    div {
+      flex-direction: row;
+      input {
+        width: 100%;
+      }
+      @media (min-width: func-container(sm)) {
+        input {
+          margin: 0 0.5rem;
+          width: calc(50% - 1rem);
+        }
+      }
+    }
+    div:last-of-type {
+      @media (min-width: func-container(sm)) {
+        input {
+          width: calc(33.3333333% - 1rem);
+        }
+      }
+    }
+    input {
+      background-color: transparent;
+      border: none;
+      border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.3);
+      outline: none;
+      padding: 1rem 0.5rem 0.5rem 0.5rem;
+      margin-bottom: 1rem;
+      color: #BCBCBC;
+      &:hover, &:focus {
+        border-bottom: 0.0625rem solid #BCBCBC;
+      }
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.3);
+      }
+    }
+    button {
+      border: 0.0625rem solid #BCBCBC;
+      background-color: transparent;
+      border-radius: 1000rem;
+      padding: 0.5rem 1.5rem;
+      font-size: 0.6em;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #BCBCBC;
+      margin-top: 0.75rem;
+      outline: none;
+      @media (min-width: func-container(sm)) {
+        align-self: center;
+      }
+      &:hover {
+        background-color: #BCBCBC;
+        color: #282828;
+      }
+    }
+  }
+}
+
 .footer {
-  background-color: #303030;
+  background-color: #282828;
   padding-top: 3rem;
   padding-bottom: 3rem;
   &__container {
     @include func-row(g-xl);
     flex-direction: row;
-    color: #696969;
   }
   &__about, &__contact, &__comments, &__posts {
     @include func-col(sm-6, lg-3);
@@ -464,8 +615,9 @@ p {
         border-radius: 50%;
         margin-right: 0.5rem;
         &:hover {
-          background-color: #404040;
-          color: #FFFFFF;
+          background-color: #696969;
+          border: 0.0625rem solid #696969;
+          color: #282828;
         }
       }
       i {
@@ -478,11 +630,6 @@ p {
     margin-bottom: 0;
   }
   &__about {
-    img {
-      max-width: 5rem;
-      margin-bottom: 1.8rem;
-      opacity: 0.2;
-    }
     p {
       font-weight: 500;
       font-size: 0.85em;
@@ -509,9 +656,14 @@ p {
       color: #BCBCBC;
       padding: 0.75rem 1rem;
       margin-top: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-size: 0.65em;
       &:hover {
-        background-color: #404040;
-        color: #FFFFFF;
+        background-color: #696969;
+        color: #282828;
+        border: 0.0625rem solid #696969;
       }
     }
   }

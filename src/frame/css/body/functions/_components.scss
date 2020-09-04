@@ -1,0 +1,31 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:string';
+@use '../variables' as var;
+
+
+// ********************************************* version 1.0.0
+$extend-components: ();
+
+
+@mixin update-list-components($seletor, $component) {
+  $value: null;
+  @if map.get($extend-components, $component) {
+    $value: (#{$component}: map.get($extend-components, #{$component}) + ", " + $seletor);
+  } @else {
+    $value: (#{$component}: #{$seletor});
+  }
+  $extend-components: map.merge($extend-components, $value) !global;
+}
+
+
+@mixin extend-components ($list){
+  /* ********************************************* COMPONENT NAMES */
+  @each $key, $value in $list {
+    @if $value {
+      :root {
+        --#{$key}: #{$value};
+      }
+    }
+  }
+}

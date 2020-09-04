@@ -1,0 +1,73 @@
+@use '../variables' as var;
+@use '../functions/components' as fcom;
+
+
+// ********************************************* version 1.0.0
+/* **************************************************************** MODAL */
+@mixin open-modal($modal, $seletor: &) {
+  @include fcom.update-list-components($seletor, "open-modal");
+  @include fcom.update-list-components($modal, "open-modal-options");
+}
+
+
+@mixin modal($seletor: &) {
+  @include fcom.update-list-components($seletor, "modal");
+  @extend %modal;
+
+}
+
+
+%modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  & > *:first-child {
+    z-index: 10;
+    max-width: 30rem;
+    margin: 0 1rem;
+    position: fixed;
+    background-color: #FFF;
+    //box-shadow: 0 0 2rem 0 var.$modal-color-overlay;
+    border-radius: var.$modal-border-radius;
+    border: var.$modal-border-width solid var.$modal-color-border;
+    & > *:first-child {
+      padding: 1rem;
+      flex-wrap: nowrap;
+      border-bottom: var.$modal-border-width solid var.$modal-color-border;
+      background-color: var.$modal-color-hover;
+    }
+    & > *:nth-child(2) {
+      padding: 1rem;
+      flex-wrap: nowrap;
+    }
+    & > *:last-child {
+      padding: 1rem;
+      flex-wrap: nowrap;
+      border-top: var.$modal-border-width solid var.$modal-color-border;
+      background-color: var.$modal-color-hover;
+    }
+    & > *:first-child > .menu-modal-close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      &::after {
+        content: '\2716';
+        padding: 0.5rem 1rem;
+      }
+    }
+  }
+  & > .menu-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9;
+    background-color: var.$modal-color-overlay;
+  }
+}

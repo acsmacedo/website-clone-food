@@ -1,0 +1,27 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:string';
+@use '../variables' as var;
+
+
+// ********************************************* version 1.0.0
+/* **************************************************************** GRID */
+@each $break in var.$breakpoints {
+  @media (min-width: map.get($break, "container-width")) {
+    @for $col-numbers from 1 through map.get($break, "columns") {
+      $create-col: list.append((), $col-numbers);
+
+      @each $number in $create-col {
+        $diff: map.get($break, "columns") - $number;
+
+        %col-#{map.get($break, "name")}-#{$number} {
+          width: calc(100% / #{map.get($break, "columns")} * #{$number});
+        }
+        %col-#{map.get($break, "name")}-gutters-#{$number} {
+          width: calc(100% / #{map.get($break, "columns")} * #{$number} - #{map.get($break, "gutters")} * #{$diff} / #{map.get($break, "columns")});
+          margin-right: calc(#{map.get($break, "gutters")});
+        }
+      }
+    }
+  }
+}

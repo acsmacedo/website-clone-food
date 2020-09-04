@@ -1,0 +1,53 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:string';
+@use '../variables' as var;
+
+
+// ********************************************* version 1.0.0
+/* ********************************************* RESET */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+}
+
+header, nav, aside, section, 
+article, main, div, footer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, p, pre,
+ul, ol, li, dl, dt, dd, blockquote,
+a, span {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  color: inherit;
+  list-style: none;
+  text-decoration: inherit;
+}
+
+table, thead, tbody, tfoot,
+tr, th, td {
+  text-align: initial;
+  border-collapse: collapse;
+  padding: 0;
+  border: none;
+}
+
+img {
+  width: 100%;
+  object-fit: cover;
+}

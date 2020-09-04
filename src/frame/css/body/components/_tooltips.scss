@@ -1,0 +1,109 @@
+@use '../variables' as var;
+@use '../functions/components' as fcom;
+
+
+// ********************************************* version 1.0.0
+/* **************************************************************** TOOLTIPS */
+@mixin tooltips($event: click, $width: 10rem, $mode: block, $stop: stop, $seletor: &) { 
+  @if ($event != 'click') and ($event != 'over')  {
+    @error 'A variável "$event" deve receber como parâmetro "click" ou "over"!';
+  }
+
+  @if ($stop != null) and ($stop != 'stop')  {
+    @error 'A variável "$stop" deve receber como parâmetro "null" ou "stop"!';
+  }
+
+  @if ($mode != 'block')  and ($mode != 'text') {
+    @error 'A variável "$mode" deve receber como parâmetro "text" ou "block"!';
+  }
+
+  @if ($seletor != &) {
+    @error 'Não altere a variável "$seletor". Verique os argumentos passados!';
+  }
+
+  $options: '#{$event} #{$stop}';
+
+  @include fcom.update-list-components($seletor, "tooltips");
+  @include fcom.update-list-components($options, "tooltips-options");
+
+  > * {
+    width: $width;
+  }
+
+  @extend %tooltips;
+  @if ($mode == 'text') { @extend %tooltips-text; }
+  @if ($mode == 'btn') { @extend %tooltips-btn; }
+}
+
+
+%tooltips {
+  position: relative;
+  display: inline-block;
+  overflow: visible;
+  cursor: help;
+  > * {
+    background-color: var.$tooltips-color;
+    color: var.$tooltips-color-back;
+    text-align: center;
+    border-radius: var.$tooltips-border-radius;
+    padding: 0.5rem;
+    position: absolute;
+    z-index: 1;
+    &::after {
+      content: "";
+      position: absolute;
+      border-width: 0.4rem;
+      border-style: solid;
+    }
+  }
+
+  .tooltips-top {
+    bottom: calc(100% + 0.5rem); 
+    &::after {
+      top: 99.5%;
+      right: 50%;
+      margin-right: -0.4rem;
+      border-color: var.$tooltips-color transparent transparent transparent;
+    }
+  }
+  
+  .tooltips-bottom {
+    top: calc(100% + 0.5rem); 
+    &::after {
+      bottom: 99.5%;
+      left: 50%;
+      margin-left: -0.4rem;
+      border-color: transparent transparent var.$tooltips-color transparent;
+    }
+  }
+  
+  .tooltips-right{
+    left: calc(100% + 0.5rem); 
+    &::after {
+      top: 50%;
+      right: 99.5%;
+      margin-top: -0.4rem;
+      border-color: transparent var.$tooltips-color transparent transparent;
+    }
+  }
+  
+  .tooltips-left {
+    right: calc(100% + 0.5rem); 
+    &::after {
+      bottom: 50%;
+      left: 99.5%;
+      margin-bottom: -0.4rem;
+      border-color: transparent transparent transparent var.$tooltips-color;
+    }
+  }
+}
+
+%tooltips-text {
+  border-bottom: 0.0625rem dotted var.$tooltips-color-border;
+  &:hover {
+    border-bottom: 0.0625rem solid var.$tooltips-color-text;
+  }
+  &[data-active] {
+    border-bottom: 0.0625rem solid var.$tooltips-color-text;
+  }
+}

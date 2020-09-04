@@ -1,0 +1,26 @@
+@use 'sass:meta';
+@use 'sass:math';
+@use '../functions/components' as fcom;
+
+
+// ********************************************* version 1.0.0
+@mixin increment-numbers($number, $seletor: &) {
+  @if (meta.type-of($number) != number) {
+    @error 'A variável "$number" precisa ser do tipo "number"';
+  }
+  
+  @if ($number <= 0) {
+    @error 'A variável "$number" precisa ser  maior do que "zero"!';
+  }
+  
+  @if (not(math.is-unitless($number))) {
+    @error 'A variável "$number" não pode ter unidade de medida!';
+  }
+
+  @if ($seletor != &) {
+    @error 'Não altere a variável "$seletor". Verique os argumentos passados!';
+  }
+  
+  @include fcom.update-list-components($seletor, "increment-numbers");
+  @include fcom.update-list-components($number, "increment-numbers-options");
+}

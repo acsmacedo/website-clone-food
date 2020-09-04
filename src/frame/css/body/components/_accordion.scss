@@ -1,0 +1,102 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:string';
+@use '../variables' as var;
+@use '../functions/components' as fcom;
+
+
+// ********************************************* version 1.0.0
+/* **************************************************************** ACCORDION */
+%accordion-style {
+  > * > * {
+    padding: 0.5rem 1rem;
+    color: var.$accordion-color-text;
+  }
+  > * > :first-child {
+    flex-direction: row;
+    position: relative;
+    align-items: center;
+    & > :nth-child(2) {
+      margin-left: 0.25rem;
+    }
+    &::after {
+      content: '\002B';
+      position: absolute;
+      right: 1rem;
+    }
+  }
+  > *[data-active] > :first-child {
+    &::after {
+      content: '\2212';
+    }
+  }
+}
+
+%accordion-style-line {
+  > * > :first-child {
+    border-bottom: var.$accordion-border-width solid var.$accordion-color-border;
+    &:hover {
+      border-bottom-color: var.$accordion-color-text;
+    }
+  }
+  > *[data-active] > :first-child {
+    color: var.$accordion-color;
+    border-bottom-color: var.$accordion-color;
+  }
+  > * > :nth-child(2) {
+    padding-bottom: 1.5rem;
+  }
+}
+
+%accordion-style-box {
+  > * {
+    margin-bottom: 0.25rem;
+  }
+  > * > :first-child {
+    border: var.$accordion-border-width solid var.$accordion-color-border;
+    border-radius: var.$accordion-border-radius;
+    &:hover {
+      background-color: var.$accordion-color-hover;
+    } 
+  }
+  > *[data-active] > :first-child {
+    background-color: var.$accordion-color;
+    color: var.$accordion-color-back;
+    border-color: var.$accordion-color;
+  }
+}
+
+%accordion-style-folder {
+  > * {
+    border: var.$accordion-border-width solid var.$accordion-color-border;
+    border-bottom-width: 0;
+  }
+  > * > :first-child:hover {
+    background-color: var.$accordion-color-hover;
+  }
+  > *:last-child {
+    border-bottom-width: var.$accordion-border-width;
+  }
+  > *[data-active] {
+    border-color: var.$accordion-color;
+    border-bottom-width: var.$accordion-border-width;
+    & > :first-child:hover {
+      background-color: transparent;
+    }
+    & + * {
+      border-top-width: 0;
+    }
+  }
+}
+
+@mixin accordion($style: null, $first: "close", $state: "more", $seletor: &) {
+  $options: "#{$first} #{$state}";
+
+  @include fcom.update-list-components($seletor, "accordion");
+  @include fcom.update-list-components($options, "accordion-options");
+
+  @if $style {
+    @extend %accordion-style;
+    @extend %accordion-style-#{$style}; 
+  }
+}

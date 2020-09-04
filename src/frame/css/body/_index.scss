@@ -1,0 +1,28 @@
+@forward 'variables' as var-*;
+
+// ********************************************* FUNCTIONS
+@forward 'functions/components' as func-*;
+@forward 'functions/layout' as func-*;
+@forward 'functions/colors' as func-*;
+
+// ********************************************* STYLE
+@forward 'style/reset';
+//@forward 'style/custom';
+@forward 'style/screen-readers';
+
+// ********************************************* LAYOUT
+@forward 'layout/container';
+@forward 'layout/grid';
+
+// ********************************************* COMPONENTS
+@forward 'components/tab' as comp-*;
+@forward 'components/accordion' as comp-*;
+@forward 'components/carousel' as comp-*;
+@forward 'components/scroll-up' as comp-*;
+@forward 'components/scroll-down' as comp-*;
+@forward 'components/scroll-progress' as comp-*;
+@forward 'components/scroll-spy' as comp-*;
+@forward 'components/increment-numbers' as comp-*;
+@forward 'components/menu-colapse-sidebar' as comp-*;
+@forward 'components/tooltips' as comp-*;
+@forward 'components/modal' as comp-*;

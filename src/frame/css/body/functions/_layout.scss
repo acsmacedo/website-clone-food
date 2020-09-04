@@ -1,0 +1,58 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:string';
+@use '../variables' as var;
+
+
+// ********************************************* version 1.0.0
+@function container($value) {
+  @each $break in var.$breakpoints { 
+    @if map.get($break, "name") == $value {
+      @return map.get($break, "container-width");
+    }
+  }
+}
+
+
+@function content($value) {
+  @each $break in var.$breakpoints { 
+    @if map.get($break, "name") == $value {
+      @return map.get($break, "content-width");
+    }
+  }
+}
+
+
+@mixin row($container) {
+  @extend %container-#{$container};
+}
+
+
+@mixin col($columns-list...) {
+  @each $column in $columns-list {
+    @extend %col-#{$column};
+  }
+}
+
+
+@mixin clear-col-one($name-container, $rule) {
+  @each $break in var.$breakpoints {
+    @if $name-container == map.get($break, "name") {
+      @media (min-width: map.get($break, "container-width")) {
+        > :nth-child(#{$rule}) {
+          margin-right: 0;
+        }
+        > :not(:nth-child(#{$rule})) {
+          margin-right: map.get($break, "gutters");
+        }
+      }
+    }
+  }
+}
+
+
+@mixin clear-col($list...) {
+  @each $name-container, $rule in $list {
+    @include clear-col-one($name-container, $rule);
+  }
+}

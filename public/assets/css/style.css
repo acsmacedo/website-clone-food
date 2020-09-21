@@ -114,7 +114,7 @@ img {
 }
 /* **************************************************************** GRID */
 @media (min-width: 576px) {
-  .testimonials__content, .footer__about, .footer__contact, .footer__comments, .footer__posts {
+  .footer__about, .footer__contact, .footer__comments, .footer__posts {
     width: calc(100% / 12 * 6);
   }
 }
@@ -360,6 +360,9 @@ p {
   justify-content: space-between;
   align-items: center;
 }
+.menu__logo {
+  cursor: pointer;
+}
 .menu__logo p {
   font-family: "Lora", serif;
   font-size: 1.2em;
@@ -378,6 +381,7 @@ p {
 .menu__options i {
   font-size: 1.2em;
   padding: 0.2rem;
+  cursor: pointer;
 }
 .menu__options i:hover {
   color: #FFFFFF;
@@ -396,6 +400,7 @@ p {
   font-family: "Lora", serif;
   margin-left: 1rem;
   padding-bottom: 0.1rem;
+  cursor: pointer;
 }
 .menu .menu-colapse-icon:hover {
   color: #FFFFFF;
@@ -435,6 +440,7 @@ p {
 }
 .menu-colapse-content div i {
   padding: 0.5rem;
+  cursor: pointer;
 }
 
 .header {
@@ -493,14 +499,14 @@ p {
   left: calc(50% - 12px);
   font-size: 1.5em;
   opacity: 0.5;
+  cursor: pointer;
 }
 .header__container i:hover {
   opacity: 1;
 }
 
 .about {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../img/background.jpg");
-  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 @media (min-width: 768px) {
   .about__container {
@@ -582,9 +588,18 @@ p {
 .info__title h2, .info__title span, .info__title p {
   color: #FFFFFF;
 }
+.info__title i {
+  cursor: pointer;
+}
 
 .cardapio {
   margin-top: -15rem;
+  padding-bottom: 0;
+}
+@media (min-width: 576px) {
+  .cardapio {
+    padding-bottom: 6rem;
+  }
 }
 .cardapio__container {
   background-color: #FFFFFF;
@@ -606,6 +621,7 @@ p {
 .cardapio__links {
   font-size: 0.8em;
   margin-top: 1rem;
+  cursor: pointer;
 }
 @media (min-width: 768px) {
   .cardapio__links {
@@ -670,6 +686,8 @@ p {
   .cardapio__item > div div span:nth-child(1)::after {
     content: " ........................................................................................................................";
     position: absolute;
+    top: 0;
+    left: 100%;
   }
 }
 .cardapio__item > div div span:nth-child(2) {
@@ -690,8 +708,7 @@ p {
 }
 
 .testimonials {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../img/background.jpg");
-  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 .testimonials__tab {
   align-items: center;
@@ -700,6 +717,7 @@ p {
 .testimonials__link {
   justify-content: center;
   margin-top: 1rem;
+  cursor: pointer;
 }
 .testimonials__link div {
   padding: 0.4rem !important;
@@ -709,6 +727,7 @@ p {
   margin: 0 0.2rem !important;
 }
 .testimonials__content {
+  max-width: 700px;
   text-align: center;
 }
 .testimonials__content p {
@@ -883,6 +902,7 @@ p {
 .footer__contact > div i {
   font-size: 1.3em;
   padding: 0.5rem;
+  cursor: pointer;
 }
 .footer__posts {
   margin-bottom: 0;
@@ -923,6 +943,7 @@ p {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   font-size: 0.65em;
+  cursor: pointer;
 }
 .footer__about button:hover {
   background-color: #696969;

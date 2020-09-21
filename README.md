@@ -1,5 +1,5 @@
 # CLONE FOOD
-Clone food é um projeto pessoal criado com o intuito de praticar a criação de sites. O código inteiro foi criado do zero, porém, foi utilizado como referência o layout de um site comercial da internet: [veja aqui](https://norebro.clbthemes.com/demo22/#).
+Clone Food é um projeto pessoal criado com o intuito de praticar a criação de sites. O código inteiro foi criado do zero, porém, foi utilizado como referência o layout de um site comercial da internet: [veja aqui](https://norebro.clbthemes.com/demo22/#).
 
 ### Codificação
 - Foi utilizado apenas HTML, CSS, Sass e Javascript.

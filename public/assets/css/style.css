@@ -507,6 +507,9 @@ p {
     flex-direction: row;
   }
 }
+.about img {
+  max-height: 500px;
+}
 .about__title {
   justify-content: center;
   text-align: center;
@@ -591,13 +594,14 @@ p {
   margin-top: 6rem;
 }
 .cardapio__body {
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  margin-top: 2rem;
+  align-self: flex-start;
 }
 .cardapio__tab {
   width: 100%;
   align-items: center;
-  margin: 0 0 2rem 0;
+  margin: 0 0 1rem 0;
 }
 .cardapio__links {
   font-size: 0.8em;
@@ -609,7 +613,10 @@ p {
   }
 }
 .cardapio__content {
-  width: 100%;
+  width: 90%;
+  margin: 0 auto;
+  padding: 0 !important;
+  align-self: flex-start;
 }
 @media (min-width: 768px) {
   .cardapio__content {
@@ -620,21 +627,24 @@ p {
   width: 100%;
   margin: 0 auto;
   margin-top: 1rem;
+  align-items: center;
+  text-align: center;
 }
 @media (min-width: 576px) {
   .cardapio__item {
-    align-items: center;
     flex-direction: row;
+    text-align: left;
   }
 }
 .cardapio__item img {
   width: 70px;
   height: 70px;
 }
-.cardapio__item > div {
-  justify-content: center;
-  margin-left: 1rem;
-  width: calc(100% - 86px);
+@media (min-width: 576px) {
+  .cardapio__item > div {
+    width: calc(100% - 86px);
+    margin-left: 1rem;
+  }
 }
 .cardapio__item > div div {
   flex-direction: row;
@@ -672,7 +682,7 @@ p {
 }
 .cardapio__footer {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 6rem;
 }
 .cardapio__footer a {
   align-self: center;
@@ -684,7 +694,7 @@ p {
   background-size: cover;
 }
 .testimonials__tab {
-  align-content: center;
+  align-items: center;
   flex-direction: column-reverse;
 }
 .testimonials__link {
@@ -773,42 +783,45 @@ p {
   outline: none;
   padding: 1rem 0.5rem 0.5rem 0.5rem;
   margin-bottom: 1rem;
-  color: #BCBCBC;
+  color: white;
 }
 .form__content input:hover, .form__content input:focus {
-  border-bottom: 0.0625rem solid #BCBCBC;
+  border-bottom: 0.0625rem solid white;
 }
 .form__content input::placeholder {
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.5);
 }
 .form__content button {
-  border: 0.0625rem solid #BCBCBC;
-  background-color: rgba(255, 255, 255, 0);
+  border: 0.0625rem solid white;
+  background-color: white;
   border-radius: 1000rem;
   padding: 0.5rem 1.5rem;
   font-size: 0.6em;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #BCBCBC;
+  color: #282828;
   margin-top: 0.75rem;
   outline: none;
   transition: background-color 0.5s;
+  cursor: pointer;
 }
 @media (min-width: 576px) {
   .form__content button {
     align-self: center;
   }
 }
-.form__content button:hover {
-  background-color: #BCBCBC;
-  color: #282828;
-}
 
 .footer {
   background-color: #282828;
   padding-top: 3rem;
   padding-bottom: 3rem;
+  text-align: center;
+}
+@media (min-width: 576px) {
+  .footer {
+    text-align: left;
+  }
 }
 .footer__container {
   flex-direction: row;
@@ -848,20 +861,26 @@ p {
   color: #FFFFFF;
   text-decoration: underline;
 }
-.footer__contact div {
+.footer__contact > div {
   flex-direction: row;
+  justify-content: center;
 }
-.footer__contact div div {
+@media (min-width: 576px) {
+  .footer__contact > div {
+    justify-content: flex-start;
+  }
+}
+.footer__contact > div div {
   border: 0.0625rem solid #404040;
   border-radius: 50%;
   margin-right: 0.5rem;
 }
-.footer__contact div div:hover {
+.footer__contact > div div:hover {
   background-color: #696969;
   border: 0.0625rem solid #696969;
   color: #282828;
 }
-.footer__contact div i {
+.footer__contact > div i {
   font-size: 1.3em;
   padding: 0.5rem;
 }
@@ -879,6 +898,12 @@ p {
   border-bottom: 0.0625rem solid #404040;
   padding: 0.75rem 0;
   color: #BCBCBC;
+  text-align: center;
+}
+@media (min-width: 576px) {
+  .footer__about input {
+    text-align: left;
+  }
 }
 .footer__about input:hover, .footer__about input:focus {
   border-color: #BCBCBC;
